@@ -36,7 +36,7 @@ function App() {
                <ViewModal />
                <ShoppingCartModal />
                {/* <Footer /> */}
-               <BottomNav />
+               {/* <BottomNav /> */}
             </ShoppingCartProvider>
          </ModalProvider>
       </BrowserRouter>

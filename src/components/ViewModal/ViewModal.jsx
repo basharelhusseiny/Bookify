@@ -8,7 +8,6 @@ import { FaHeart } from "react-icons/fa";
 
 const ViewModal = () => {
    const { isModalOpen, selectedBook, setIsModalOpen } = useModal();
-   const [value, setValue] = useState(1);
 
    // Prevent scrolling when opening the Modal
    useEffect(() => {
@@ -40,7 +39,7 @@ const ViewModal = () => {
                   <div className="flex justify-center items-center h-full bg-rose-50">
                      <img
                         src={`/images/books/${selectedBook?.image}`}
-                        alt=""
+                        alt="Book Image"
                         className="my-7 w-[310px] h-[310px] object-contain"
                      />
                   </div>
@@ -69,19 +68,14 @@ const ViewModal = () => {
                      aspernatur necessitatibus assumenda. Fugiat culpa aliquam
                      labore libero hic nihil minima aut saepe natus.
                   </p>
-                  <div className="flex items-center my-5">
-                     {/* <input
-                        type="number"
-                        name="num"
-                        className="block no-spinner border-1 border-gray-300 rounded-xl w-[50px] h-[40px] outline-hidden text-center "
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                     /> */}
+                  <div className="flex max-sm:flex-col max-sm:items-start items-center my-5">
                      <QuantitySelector />
-                     <ViewCartBtn selectedBook={selectedBook} />
-                     <button className="cursor-pointer h-[40px] max-md:px-3 bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-300">
-                        <FaHeart className="text-xl animate-pulse" />
-                     </button>
+                     <div className="flex mt-3">
+                        <ViewCartBtn selectedBook={selectedBook} />
+                        <button className="cursor-pointer h-[40px] max-md:px-3 bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-300">
+                           <FaHeart className="text-xl animate-pulse" />
+                        </button>
+                     </div>
                   </div>
                   <h4 className="capitalize text-[15px] mb-1">
                      <span className="font-medium">author : </span>

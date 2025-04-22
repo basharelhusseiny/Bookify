@@ -6,7 +6,7 @@ import BookRating from "../common/BookRating";
 
 const BookCards = ({ book }) => {
    const { handleOpenModal } = useModal();
-   const { handleOpenShoppingCart, addToCart, cartItems } = useShoppingCart();
+   const { handleOpenShoppingCart, addToCart} = useShoppingCart();
    return (
       <>
          <div key={book.id} className="w-[200px] border-r border-gray-300 pr-5">
@@ -36,7 +36,6 @@ const BookCards = ({ book }) => {
                      onClick={() => {
                         addToCart(book);
                         handleOpenShoppingCart();
-                        console.log(cartItems);
                      }}
                      className="capitalize text-sm p-2 bg-rose-100 text-rose-500 hover:bg-rose-500 hover:text-white cursor-pointer font-semibold rounded-full duration-200"
                   >

@@ -10,7 +10,7 @@ const ShoppingCartPage = () => {
    return (
       <div className="mt-[68px]">
          <div className="bg-rose-100 py-17">
-            <h1 className="text-center text-5xl uppercase font-extralight">
+            <h1 className="text-center  text-5xl max-sm:text-3xl uppercase font-extralight">
                Shopping cart
             </h1>
          </div>
@@ -72,7 +72,7 @@ const ShoppingCartPage = () => {
                      })}
                   </tbody>
                </table>
-               {/* sdadadadadsadada */}
+               {/* Mobilee */}
                <div className="hidden max-md:block">
                   {cartItems.map((product) => {
                      return (

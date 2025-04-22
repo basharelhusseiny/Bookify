@@ -5,12 +5,13 @@ import { Link } from "react-router";
 
 const LandingSlider = () => {
    const [slider, setSlider] = useState(0);
-   useEffect(() => {
-      const interval = setInterval(() => {
-         setSlider((prev) => (prev === 1 ? 0 : 1));
-      }, 5000);
-      return () => clearInterval(interval);
-   }, []);
+
+   // useEffect(() => {
+   //    const interval = setInterval(() => {
+   //       setSlider((prev) => (prev === 1 ? 0 : 1));
+   //    }, 5000);
+   //    return () => clearInterval(interval);
+   // }, []);
 
    return (
       <section className="landing-slider relative h-[calc(100vh-108px)] overflow-hidden">
