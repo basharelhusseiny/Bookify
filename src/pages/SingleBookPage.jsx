@@ -11,6 +11,7 @@ const SingleBookPage = () => {
    const mainImg = useRef(null);
    const [animate, setAnimate] = useState(false);
    const [activeImg, setActiveImg] = useState(false);
+   const [localQty, setLocalQty] = useState(1);
 
    const bookData = books.find((book) => book.id === +id);
    const changeImg = (imgSrc) => {
@@ -86,15 +87,20 @@ const SingleBookPage = () => {
                      aspernatur necessitatibus assumenda. Fugiat culpa aliquam
                      labore libero hic nihil minima aut saepe natus.
                   </p>
-                  <div className="flex items-center my-5">
-                     <QuantitySelector />
-                     <ViewCartBtn bookData={bookData} />
-                     <button className="flex items-center justify-center cursor-pointer h-[40px] max-md:px-3  bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-200">
-                        <FaHeart className="text-xl mr-[6px] max-md:mr-[3px] animate-pulse" />
-                        <span className="text-[15px] max-md:text-[11px] font-semibold">
-                           Add to Wishlist
-                        </span>
-                     </button>
+                  <div className="flex max-sm:flex-col max-sm:items-start items-center my-5">
+                     <QuantitySelector
+                        quantity={localQty}
+                        setQuantity={setLocalQty}
+                     />
+                     <div className="flex max-sm:mt-3">
+                        <ViewCartBtn bookData={bookData} localQty={localQty} />
+                        <button className="flex items-center justify-center cursor-pointer h-[40px] max-md:px-3  bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-200">
+                           <FaHeart className="text-xl mr-[6px] max-md:mr-[3px] animate-pulse" />
+                           <span className="text-[15px] max-md:text-[11px] font-semibold">
+                              Add to Wishlist
+                           </span>
+                        </button>
+                     </div>
                   </div>
                   <h4 className="capitalize text-[15px] mb-1">
                      <span className="font-medium">author : </span>

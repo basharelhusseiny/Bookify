@@ -1,12 +1,11 @@
 import { Link } from "react-router";
 import CloseButton from "../components/common/CloseButton";
-import QuantitySelector from "../components/common/QuantitySelector";
-import { books } from "../data/books";
 import { IoClose } from "react-icons/io5";
 import { useShoppingCart } from "../Context/ShoppingCartContext";
 
 const ShoppingCartPage = () => {
-   const { cartItems, removeItem } = useShoppingCart();
+   const { cartItems, removeItem, totalPrice } = useShoppingCart();
+
    return (
       <div className="mt-[68px]">
          <div className="bg-rose-100 py-17">
@@ -24,7 +23,7 @@ const ShoppingCartPage = () => {
                         <th></th>
                         <th className="text-start pb-4">product</th>
                         <th className="text-start pb-4">price</th>
-                        <th className="text-start pb-4">quantity</th>
+                        <th className="text-start pb-4">Quantity</th>
                         <th className="text-start pb-4">subtotal</th>
                      </tr>
                   </thead>
@@ -60,13 +59,14 @@ const ShoppingCartPage = () => {
                                     </span>
                                  </p>
                               </td>
-                              <td className="py-3 font-semibold text-lg text-rose-500">
+                              <td className="py-3 font-semibold text-rose-500">
                                  ${product.price}
                               </td>
-                              <td className="py-3 pr-3">
-                                 <QuantitySelector />
+                              <td>x{product.quantity}</td>
+                              <td className="py-3 text-rose-500 font-semibold text-lg">
+                                 $
+                                 {(product.price * product.quantity).toFixed(2)}
                               </td>
-                              <td className="py-3">dsad</td>
                            </tr>
                         );
                      })}
@@ -95,7 +95,7 @@ const ShoppingCartPage = () => {
                               <p className="font-semibold text-lg mr-5">
                                  {product.title}
                               </p>
-                              <p className="text-lg my-3">
+                              <p className="text-lg">
                                  <span className="font-medium">Author: </span>
                                  <span className="text-gray-500">
                                     {product.author}
@@ -109,17 +109,19 @@ const ShoppingCartPage = () => {
                                     ${product.price}
                                  </span>
                               </p>
-                              <div className="flex items-center justify-between">
-                                 <p className="text-lg font-semibold pr-2 my-3">
-                                    Quantity:{" "}
-                                 </p>
-                                 <QuantitySelector />
-                              </div>
+                              <p className="flex items-center justify-between">
+                                 <span className="capitalize font-semibold text-lg">
+                                    quantity
+                                 </span>
+                                 <span className="text-gray-500">
+                                    x{product.quantity}
+                                 </span>
+                              </p>
                               <p className="flex items-center justify-between">
                                  <span className="capitalize font-semibold text-lg">
                                     subtotal
                                  </span>
-                                 <span className="text-lg text-rose-500">
+                                 <span className="text-lg text-rose-500 font-medium">
                                     $4555
                                  </span>
                               </p>
@@ -139,7 +141,7 @@ const ShoppingCartPage = () => {
                            subtotal
                         </span>
                         <span className="text-rose-500 text-lg font-medium">
-                           $100
+                           $ {totalPrice.toFixed(2)}
                         </span>
                      </p>
                      <p className="flex items-center justify-between mb-8">
@@ -147,7 +149,7 @@ const ShoppingCartPage = () => {
                            total
                         </span>
                         <span className="text-rose-500 text-2xl font-semibold">
-                           $100
+                           $ {totalPrice.toFixed(2)}
                         </span>
                      </p>
                      <Link

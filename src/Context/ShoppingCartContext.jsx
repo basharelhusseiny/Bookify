@@ -14,8 +14,32 @@ const ShoppingCartProvider = ({ children }) => {
       setCartModalOpen(true);
    };
 
-   const addToCart = (item) => {
-      setCartItems((prev) => [...prev, item]);
+   // const addToCart = (product) => {
+   //    setCartItems((prev) => [...prev, product]);
+   // };
+   const addToCart = (product, quantity = 1) => {
+      const existingItem = cartItems.find((item) => item.id === product.id);
+
+      if (existingItem) {
+         setCartItems((prev) =>
+            prev.map((item) =>
+               item.id === product.id
+                  ? {
+                       ...item,
+                       quantity: item.quantity + quantity,
+                    }
+                  : item
+            )
+         );
+      } else {
+         setCartItems((prev) => [
+            ...prev,
+            {
+               ...product,
+               quantity: quantity,
+            },
+         ]);
+      }
    };
 
    const removeItem = (id) => {
@@ -26,6 +50,10 @@ const ShoppingCartProvider = ({ children }) => {
       localStorage.setItem("cartItem", JSON.stringify(cartItems));
    }, [cartItems]);
 
+   const totalPrice = cartItems.reduce(
+      (acc, cur) => acc + cur.price * cur.quantity,
+      0
+   );
    return (
       <ShoppingCartContext.Provider
          value={{
@@ -35,6 +63,7 @@ const ShoppingCartProvider = ({ children }) => {
             handleOpenShoppingCart,
             addToCart,
             removeItem,
+            totalPrice,
          }}
       >
          {children}

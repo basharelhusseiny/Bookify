@@ -5,8 +5,13 @@ import { IoClose } from "react-icons/io5";
 import { Link } from "react-router";
 
 const ShoppingCartModal = () => {
-   const { cartModalOpen, setCartModalOpen, cartItems, removeItem } =
-      useShoppingCart();
+   const {
+      cartModalOpen,
+      setCartModalOpen,
+      cartItems,
+      removeItem,
+      totalPrice,
+   } = useShoppingCart();
    useEffect(() => {
       cartModalOpen
          ? (document.body.style.overflow = "hidden")
@@ -68,7 +73,12 @@ const ShoppingCartModal = () => {
                                  </span>
                               </p>
                               <p className="text-sm font-medium text-rose-500">
-                                 ${product.price}
+                                 <span className="text-gray-500">
+                                    {product.quantity}x{" "}
+                                 </span>
+                                 <span className="text-base">
+                                    ${product.price}
+                                 </span>
                               </p>
                            </div>
                         </div>
@@ -80,7 +90,9 @@ const ShoppingCartModal = () => {
                   <div className="mx-7 border-t-2 border-gray-200">
                      <div className="flex items-center justify-between py-4">
                         <p className="text-lg font-semibold">Subtotal: </p>
-                        <p className="text-rose-500 font-semibold">$40.00</p>
+                        <p className="text-rose-500 font-semibold text-lg">
+                           $ {totalPrice.toFixed(2)}
+                        </p>
                      </div>
                      <Link
                         to="/shoppingcart"

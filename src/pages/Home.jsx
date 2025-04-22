@@ -1,6 +1,6 @@
 import Footer from "../components/Footer/Footer";
-import BookHighlights from "../components/HomeSections/BookHighlights";
-import Features from "../components/HomeSections/Features";
+import BookHighlights from "../components/HomePage/BookHighlights";
+import Features from "../components/HomePage/Features";
 import BookSlider from "../components/Sliders/BookSlider";
 import LandingSlider from "../components/Sliders/LandingSlider";
 

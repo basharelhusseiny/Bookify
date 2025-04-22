@@ -6,7 +6,7 @@ import { IoEyeOutline, IoHeartOutline } from "react-icons/io5";
 import { useModal } from "../../Context/ModalContext";
 import { useShoppingCart } from "../../Context/ShoppingCartContext";
 import { useState } from "react";
-import Pageination from "./Pageination";
+import Pagination from "./Pagination";
 import SortBooks from "./SortBooks";
 
 const BooksSide = () => {
@@ -82,7 +82,7 @@ const BooksSide = () => {
                );
             })}
          </div>
-         <Pageination
+         <Pagination
             pages={pages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}

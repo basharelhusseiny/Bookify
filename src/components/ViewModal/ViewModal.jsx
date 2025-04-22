@@ -5,9 +5,11 @@ import BookRating from "../common/BookRating";
 import ViewCartBtn from "./ViewCartBtn";
 import QuantitySelector from "../common/QuantitySelector";
 import { FaHeart } from "react-icons/fa";
+import { useShoppingCart } from "../../Context/ShoppingCartContext";
 
 const ViewModal = () => {
    const { isModalOpen, selectedBook, setIsModalOpen } = useModal();
+   const [localQty, setLocalQty] = useState(1);
 
    // Prevent scrolling when opening the Modal
    useEffect(() => {
@@ -69,9 +71,12 @@ const ViewModal = () => {
                      labore libero hic nihil minima aut saepe natus.
                   </p>
                   <div className="flex max-sm:flex-col max-sm:items-start items-center my-5">
-                     <QuantitySelector />
-                     <div className="flex mt-3">
-                        <ViewCartBtn selectedBook={selectedBook} />
+                     <QuantitySelector
+                        quantity={localQty}
+                        setQuantity={setLocalQty}
+                     />
+                     <div className="flex max-sm:mt-3">
+                        <ViewCartBtn selectedBook={selectedBook} localQty={localQty} />
                         <button className="cursor-pointer h-[40px] max-md:px-3 bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-300">
                            <FaHeart className="text-xl animate-pulse" />
                         </button>

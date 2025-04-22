@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-const QuantitySelector = () => {
-   const [quantity, setQuantity] = useState(1);
-
+const QuantitySelector = ({ quantity, setQuantity }) => {
    return (
       <div className="flex border-2 border-gray-300 w-fit rounded-full overflow-hidden">
          <button

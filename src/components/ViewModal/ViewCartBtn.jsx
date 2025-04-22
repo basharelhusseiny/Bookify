@@ -1,13 +1,13 @@
 import { FaShoppingBasket } from "react-icons/fa";
 import { useShoppingCart } from "../../Context/ShoppingCartContext";
 
-const ViewCartBtn = ({ selectedBook, bookData }) => {
+const ViewCartBtn = ({ selectedBook, bookData, localQty }) => {
    const { handleOpenShoppingCart, addToCart } = useShoppingCart();
    return (
       <button
          onClick={() => {
             handleOpenShoppingCart();
-            addToCart(selectedBook || bookData);
+            addToCart(selectedBook || bookData, localQty);
          }}
          className="flex items-center justify-center cursor-pointer max-sm:mx-0 max-sm:mr-3 mx-3 h-[40px] bg-rose-500 hover:bg-rose-700 rounded-xl text-white px-5 duration-200"
       >
