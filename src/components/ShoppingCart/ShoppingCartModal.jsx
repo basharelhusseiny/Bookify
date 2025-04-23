@@ -3,6 +3,7 @@ import { useShoppingCart } from "../../Context/ShoppingCartContext";
 import CloseButton from "../common/CloseButton";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router";
+import EmptyCart from "./EmptyCart";
 
 const ShoppingCartModal = () => {
    const {
@@ -42,74 +43,88 @@ const ShoppingCartModal = () => {
                   />
                </div>
                {/* body for Modal */}
-               <div className="overflow-auto h-[calc(100vh-240px)]">
-                  {cartItems.map((product) => {
-                     return (
-                        <div
-                           key={product.id}
-                           className="flex relative items-start p-3 border-b-2 border-gray-200 hover:bg-gray-100 duration-300"
-                        >
-                           <IoClose
-                              onClick={() => removeItem(product.id)}
-                              className="absolute text-lg right-4 top-4 text-gray-500 cursor-pointer hover:text-rose-500 duration-500"
-                           />
-                           {/* Image */}
-                           <div className=" w-[80px] h-[80px] overflow-hidden rounded-[35px]">
-                              <img
-                                 src={`/images/books/${product.image}`}
-                                 alt="img"
-                                 className=" w-full h-full object-contain"
-                              />
-                           </div>
-                           {/* Text */}
-                           <div>
-                              <p className="text-sm font-semibold pt-2">
-                                 {product.title}
-                              </p>
-                              <p className="text-sm py-[1px]">
-                                 <span className="font-medium">Author: </span>
-                                 <span className="text-gray-600">
-                                    {product.author}
-                                 </span>
-                              </p>
-                              <p className="text-sm font-medium text-rose-500">
-                                 <span className="text-gray-500">
-                                    {product.quantity}x{" "}
-                                 </span>
-                                 <span className="text-base">
-                                    ${product.price}
-                                 </span>
-                              </p>
-                           </div>
-                        </div>
-                     );
-                  })}
-               </div>
-               {/* Footer for modal */}
-               <div className="absolute bg-white pb-10 bottom-0 left-0 w-full">
-                  <div className="mx-7 border-t-2 border-gray-200">
-                     <div className="flex items-center justify-between py-4">
-                        <p className="text-lg font-semibold">Subtotal: </p>
-                        <p className="text-rose-500 font-semibold text-lg">
-                           $ {totalPrice.toFixed(2)}
-                        </p>
+               {cartItems.length === 0 ? (
+                  <EmptyCart
+                     styleH={"text-lg"}
+                     StyleP={"px-5"}
+                     StyleL={"px-5 py-2"}
+                  />
+               ) : (
+                  <>
+                     <div className="overflow-auto h-[calc(100vh-240px)]">
+                        {cartItems.map((product) => {
+                           return (
+                              <div
+                                 key={product.id}
+                                 className="flex relative items-start p-3 border-b-2 border-gray-200 hover:bg-gray-100 duration-300"
+                              >
+                                 <IoClose
+                                    onClick={() => removeItem(product.id)}
+                                    className="absolute text-lg right-4 top-4 text-gray-500 cursor-pointer hover:text-rose-500 duration-500"
+                                 />
+                                 {/* Image */}
+                                 <div className=" w-[80px] h-[80px] overflow-hidden rounded-[35px]">
+                                    <img
+                                       src={`/images/books/${product.image}`}
+                                       alt="img"
+                                       className=" w-full h-full object-contain"
+                                    />
+                                 </div>
+                                 {/* Text */}
+                                 <div>
+                                    <p className="text-sm font-semibold pt-2">
+                                       {product.title}
+                                    </p>
+                                    <p className="text-sm py-[1px]">
+                                       <span className="font-medium">
+                                          Author:{" "}
+                                       </span>
+                                       <span className="text-gray-600">
+                                          {product.author}
+                                       </span>
+                                    </p>
+                                    <p className="text-sm font-medium text-rose-500">
+                                       <span className="text-gray-500">
+                                          {product.quantity}x{" "}
+                                       </span>
+                                       <span className="text-base">
+                                          ${product.price}
+                                       </span>
+                                    </p>
+                                 </div>
+                              </div>
+                           );
+                        })}
                      </div>
-                     <Link
-                        to="/shoppingcart"
-                        onClick={() => setCartModalOpen(false)}
-                        className="block text-center w-full px-15 py-[6px] mx-auto uppercase  text-[15px] text-black bg-gray-200 hover:bg-gray-300 font-semibold rounded-full cursor-pointer mb-3 duration-300"
-                     >
-                        view cart
-                     </Link>
-                     <Link
-                        to="/checkout"
-                        onClick={() => setCartModalOpen(false)}
-                        className="block text-center w-full px-15 py-[6px] mx-auto uppercase bg-rose-500 hover:bg-rose-700 text-[15px] text-white font-semibold rounded-full cursor-pointer duration-300"
-                     >
-                        checkout
-                     </Link>
-                  </div>
-               </div>
+                     {/* Footer for modal */}
+                     <div className="absolute bg-white pb-10 bottom-0 left-0 w-full">
+                        <div className="mx-7 border-t-2 border-gray-200">
+                           <div className="flex items-center justify-between py-4">
+                              <p className="text-lg font-semibold">
+                                 Subtotal:{" "}
+                              </p>
+                              <p className="text-rose-500 font-semibold text-lg">
+                                 $ {totalPrice.toFixed(2)}
+                              </p>
+                           </div>
+                           <Link
+                              to="/shoppingcart"
+                              onClick={() => setCartModalOpen(false)}
+                              className="block text-center w-full px-15 py-[6px] mx-auto uppercase  text-[15px] text-black bg-gray-200 hover:bg-gray-300 font-semibold rounded-full cursor-pointer mb-3 duration-300"
+                           >
+                              view cart
+                           </Link>
+                           <Link
+                              to="/checkout"
+                              onClick={() => setCartModalOpen(false)}
+                              className="block text-center w-full px-15 py-[6px] mx-auto uppercase bg-rose-500 hover:bg-rose-700 text-[15px] text-white font-semibold rounded-full cursor-pointer duration-300"
+                           >
+                              checkout
+                           </Link>
+                        </div>
+                     </div>{" "}
+                  </>
+               )}
             </div>
          </div>
       </div>

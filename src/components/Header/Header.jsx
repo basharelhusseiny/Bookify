@@ -1,19 +1,14 @@
+import { useEffect, useState } from "react";
+import { useRef } from "react";
 import Navbar from "./Navbar";
 import TopBar from "./TopBar";
 import Logo from "./Logo";
-import { IoIosSearch } from "react-icons/io";
-import { FiUser } from "react-icons/fi";
-import { IoHeartOutline } from "react-icons/io5";
-import { CiShoppingBasket } from "react-icons/ci";
-import { useEffect, useState } from "react";
-import { useRef } from "react";
-import { useShoppingCart } from "../../Context/ShoppingCartContext";
 import MobileMenu from "./MobileMenu";
+import HeaderIcons from "./HeaderIcons";
 
 const Header = () => {
    const [isMobMenuOpen, setIsMobMenuOpen] = useState(false);
    const headerRef = useRef();
-   const { handleOpenShoppingCart } = useShoppingCart();
 
    const navLinks = [
       { id: 1, link: "home", path: "/" },
@@ -51,16 +46,7 @@ const Header = () => {
                <div className="flex items-center justify-between max-md:hidden">
                   <Logo />
                   <Navbar navLinks={navLinks} />
-                  {/* Other linksssssssssss */}
-                  <div className="flex items-center">
-                     <IoIosSearch className="border-r border-r-gray-200 m-1 pr-2 text-[30px] cursor-pointer hover:text-rose-500 duration-200" />
-                     <IoHeartOutline className="border-r border-r-gray-200 m-1 pr-2 text-[30px] cursor-pointer hover:text-rose-500 duration-200" />
-                     <CiShoppingBasket
-                        onClick={() => handleOpenShoppingCart()}
-                        className="border-r border-r-gray-200 m-1 pr-2 text-[32px] cursor-pointer hover:text-rose-500 duration-200"
-                     />
-                     <FiUser className=" m-1 text-[23px] cursor-pointer hover:text-rose-500 duration-200" />
-                  </div>
+                  <HeaderIcons />
                </div>
                {/* For Mobile */}
                <MobileMenu

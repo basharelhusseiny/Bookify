@@ -17,7 +17,6 @@ const Shop = () => {
       { id: 11, name: "Foreign Language" },
       { id: 12, name: "Genre Fiction" },
       { id: 13, name: "Historical" },
-      { id: 14, name: "Uncategorized" },
    ];
    return (
       <div className="mt-[68px]">
@@ -26,11 +25,8 @@ const Shop = () => {
                shop
             </h1>
          </div>
-         {/* Sections */}
          <div className="container mx-auto px-5">
-            {/* First Section */}
             <RecommendedBook />
-            {/* Seconed Section */}
             <div className="flex lg:gap-10 mt-20">
                <div className="lg:flex-[25%]">
                   <FilterBar categories={categories} />

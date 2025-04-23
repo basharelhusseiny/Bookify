@@ -1,21 +1,8 @@
 const Checkout = () => {
    return (
-      <>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-         <div>dsdasdas</div>
-      </>
+      <div className="mt-[68px] container mx-auto px-5 ">
+         Come back later and watch.
+      </div>
    );
 };
 
