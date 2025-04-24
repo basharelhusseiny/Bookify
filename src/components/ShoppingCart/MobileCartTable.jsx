@@ -16,39 +16,37 @@ const MobileCartTable = ({ cartItems, removeItem }) => {
                   <div className="w-[90px] h-[130px]">
                      <img
                         src={`/images/books/${product.image}`}
-                        alt=""
+                        alt={product.title}
                         className="w-full h-full"
                      />
                   </div>
                   <div className="w-full">
-                     <p className="font-semibold mr-5">
+                     <p className="font-semibold text-lg mr-5">
                         {product.title}
                      </p>
                      <p className="text-lg">
-                        <span className="font-medium">Author: </span>
-                        <span className="text-gray-500 text-[15px]">{product.author}</span>
-                     </p>
-                     <p className="flex items-center justify-between">
-                        <span className="capitalize font-semibold">
-                           price
-                        </span>
-                        <span className="text-rose-500">
-                           ${product.price}
+                        <span className="capitalize font-medium">Author: </span>
+                        <span className="text-gray-500 text-[15px]">
+                           {product.author}
                         </span>
                      </p>
                      <p className="flex items-center justify-between">
-                        <span className="capitalize font-semibold">
-                           quantity
+                        <span className="capitalize font-medium">price:</span>
+                        <span className="text-rose-500">${product.price}</span>
+                     </p>
+                     <p className="flex items-center justify-between">
+                        <span className="capitalize font-medium">
+                           quantity:
                         </span>
                         <span className="text-gray-500">
                            x{product.quantity}
                         </span>
                      </p>
                      <p className="flex items-center justify-between">
-                        <span className="capitalize font-semibold">
-                           subtotal
+                        <span className="capitalize font-medium">
+                           subtotal:
                         </span>
-                        <span className="text-rose-500 font-semibold">
+                        <span className="text-rose-500 font-medium">
                            ${(product.price * product.quantity).toFixed(2)}
                         </span>
                      </p>

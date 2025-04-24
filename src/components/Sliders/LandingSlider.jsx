@@ -20,6 +20,7 @@ const LandingSlider = () => {
                onClick={() => {
                   setSlider(0);
                }}
+               aria-label="Go to first slide"
                className={`previous ${
                   slider === 0
                      ? "border-6 border-rose-400 bg-white"
@@ -30,6 +31,7 @@ const LandingSlider = () => {
                onClick={() => {
                   setSlider(1);
                }}
+               aria-label="Go to second slide"
                className={`next ${
                   slider === 1
                      ? "border-6 border-[#c7ad75] bg-white"

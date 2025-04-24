@@ -10,7 +10,7 @@ const HeaderIcons = () => {
       <div className="flex items-center">
          <IoIosSearch className="border-r border-r-gray-200 m-1 pr-2 text-[30px] cursor-pointer hover:text-rose-500 duration-200" />
          <IoHeartOutline className="border-r border-r-gray-200 m-1 pr-2 text-[30px] cursor-pointer hover:text-rose-500 duration-200" />
-         <div className="relative border-r border-r-gray-200 m-1 pr-2  cursor-pointer">
+         <div className="relative border-r border-r-gray-200 m-1 pr-2 cursor-pointer">
             <CiShoppingBasket
                onClick={() => handleOpenShoppingCart()}
                className="text-[24px] hover:text-rose-500 duration-200"

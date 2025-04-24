@@ -42,7 +42,7 @@ const BookSlider = () => {
                   <FaArrowRight className="text-white text-xl" />
                </button>
             )}
-            {/* Book Sliderrrr */}
+            {/* Book Slider */}
             <motion.div
                drag="x"
                dragConstraints={{ left: -300 * maxIndex, right: 0 }}

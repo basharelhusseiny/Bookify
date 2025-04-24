@@ -47,7 +47,7 @@ const ViewModal = () => {
                   </div>
                </div>
                {/* Div for Text */}
-               <div className="relative flex-1 min-h-full md:overflow-auto custom-scrollbar p-5">
+               <div className="relative flex-1 lg:overflow-auto custom-scrollbar p-5">
                   <div className="fixed right-4 top-4 ">
                      <CloseButton
                         onClick={() => setIsModalOpen(false)}
@@ -76,7 +76,10 @@ const ViewModal = () => {
                         setQuantity={setLocalQty}
                      />
                      <div className="flex max-sm:mt-3">
-                        <ViewCartBtn selectedBook={selectedBook} localQty={localQty} />
+                        <ViewCartBtn
+                           selectedBook={selectedBook}
+                           localQty={localQty}
+                        />
                         <button className="cursor-pointer h-[40px] max-md:px-3 bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-300">
                            <FaHeart className="text-xl animate-pulse" />
                         </button>

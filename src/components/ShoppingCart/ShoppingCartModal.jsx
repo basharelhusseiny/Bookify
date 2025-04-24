@@ -31,7 +31,7 @@ const ShoppingCartModal = () => {
       >
          <div
             onClick={(e) => e.stopPropagation()}
-            className="absolute top-0 right-0 bg-white w-[350px] max-sm:w-[300px] h-screen"
+            className="absolute top-0 right-0 bg-white w-[350px] max-sm:w-[300px] h-[100dvh]"
          >
             <div>
                {/* Header for Modal */}
@@ -51,30 +51,38 @@ const ShoppingCartModal = () => {
                   />
                ) : (
                   <>
-                     <div className="overflow-auto h-[calc(100vh-240px)]">
+                     <div className="overflow-y-auto h-[calc(100dvh-240px)]">
                         {cartItems.map((product) => {
                            return (
                               <div
                                  key={product.id}
-                                 className="flex relative items-start p-3 border-b-2 border-gray-200 hover:bg-gray-100 duration-300"
+                                 className="flex relative items-center p-3 border-b-1 border-gray-300 hover:bg-gray-100 duration-300"
                               >
                                  <IoClose
                                     onClick={() => removeItem(product.id)}
                                     className="absolute text-lg right-4 top-4 text-gray-500 cursor-pointer hover:text-rose-500 duration-500"
                                  />
                                  {/* Image */}
-                                 <div className=" w-[80px] h-[80px] overflow-hidden rounded-[35px]">
+                                 <Link
+                                    to={`bookpage/${product.id}`}
+                                    onClick={() => setCartModalOpen(false)}
+                                    className="block w-[80px] h-[80px] overflow-hidden rounded-[35px]"
+                                 >
                                     <img
                                        src={`/images/books/${product.image}`}
-                                       alt="img"
+                                       alt={product.title}
                                        className=" w-full h-full object-contain"
                                     />
-                                 </div>
+                                 </Link>
                                  {/* Text */}
                                  <div>
-                                    <p className="text-sm font-semibold pt-2">
+                                    <Link
+                                       to={`bookpage/${product.id}`}
+                                       onClick={() => setCartModalOpen(false)}
+                                       className="block text-[15px] font-semibold pt-2 pr-3 hover:text-rose-500 duration-300"
+                                    >
                                        {product.title}
-                                    </p>
+                                    </Link>
                                     <p className="text-sm py-[1px]">
                                        <span className="font-medium">
                                           Author:{" "}
@@ -122,7 +130,7 @@ const ShoppingCartModal = () => {
                               checkout
                            </Link>
                         </div>
-                     </div>{" "}
+                     </div>
                   </>
                )}
             </div>

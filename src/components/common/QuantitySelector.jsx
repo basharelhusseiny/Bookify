@@ -12,6 +12,7 @@ const QuantitySelector = ({ quantity, setQuantity }) => {
             type="number"
             name="quantity"
             id="qty"
+            aria-label="Quantity"
             className="no-spinner outline-0 w-[50px] bg-gray-100 text-center"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}

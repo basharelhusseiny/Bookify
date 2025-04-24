@@ -14,7 +14,7 @@ const OrderSummary = ({totalPrice}) => {
                </span>
             </p>
             <p className="flex items-center justify-between mb-8">
-               <span className="capitalize text-xl font-medium">total</span>
+               <span className="capitalize text-2xl font-medium">total</span>
                <span className="text-rose-500 text-2xl font-semibold">
                   $ {totalPrice.toFixed(2)}
                </span>

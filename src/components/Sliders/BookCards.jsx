@@ -22,7 +22,7 @@ const BookCards = ({ book }) => {
             </Link>
             <Link
                to={`bookpage/${book.id}`}
-               className=" text-ellipsis line-clamp-1 my-2 hover:text-rose-500 cursor-pointer duration-200"
+               className=" text-ellipsis line-clamp-1 font-semibold my-2 hover:text-rose-500 cursor-pointer duration-200"
                title={book.title}
             >
                {book.title}
