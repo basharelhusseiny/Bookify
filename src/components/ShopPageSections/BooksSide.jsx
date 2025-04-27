@@ -8,10 +8,14 @@ import { useShoppingCart } from "../../Context/ShoppingCartContext";
 import { useState } from "react";
 import Pagination from "./Pagination";
 import SortBooks from "./SortBooks";
+import { useWishlist } from "../../Context/WishlistModalContext";
+import toast from "react-hot-toast";
 
 const BooksSide = () => {
    const { handleOpenModal } = useModal();
    const { handleOpenShoppingCart, addToCart } = useShoppingCart();
+   const { isInWishlist, addToWishList, handleOpenWishlist } = useWishlist();
+
    const [currentPage, setCurrentPage] = useState(1);
    const [sortItem, setSortItem] = useState("recommended");
 
@@ -48,7 +52,17 @@ const BooksSide = () => {
                            className="w-full h-full"
                         />
                         <div className="absolute flex flex-col p-2 justify-end items-end z-10 w-full h-full bg-black/20 translate-x-full group-hover:translate-x-0 bottom-0 right-0 over duration-700">
-                           <IoHeartOutline className="bg-white text-rose-500 w-[40px] h-[40px] rounded-full p-2 m-1 cursor-pointer hover:bg-rose-500 hover:text-white duration-200" />
+                           <IoHeartOutline
+                              onClick={() => {
+                                 isInWishlist(product)
+                                    ? toast.error(
+                                         `You already love ${product.title}! 📚`
+                                      )
+                                    : (addToWishList(product),
+                                      handleOpenWishlist());
+                              }}
+                              className="bg-white text-rose-500 w-[40px] h-[40px] rounded-full p-2 m-1 cursor-pointer hover:bg-rose-500 hover:text-white duration-200"
+                           />
                            <IoEyeOutline
                               onClick={() => handleOpenModal(product)}
                               className="bg-white text-rose-500 w-[40px] h-[40px] rounded-full p-2 m-1 cursor-pointer hover:bg-rose-500 hover:text-white duration-200"

@@ -8,6 +8,7 @@ import HeaderIcons from "./HeaderIcons";
 
 const Header = () => {
    const [isMobMenuOpen, setIsMobMenuOpen] = useState(false);
+   const [isSticky, setIsSticky] = useState(false);
    const headerRef = useRef();
 
    const navLinks = [
@@ -19,11 +20,16 @@ const Header = () => {
    ];
 
    useEffect(() => {
-      window.addEventListener("scroll", () => {
-         scrollY > 50
-            ? (headerRef.current.style.top = "0")
-            : (headerRef.current.style.top = "40px");
-      });
+      const handleScroll = () => {
+         window.scrollY > 50 ? setIsSticky(true) : setIsSticky(false);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+
+      return () => {
+         window.removeEventListener("scroll", handleScroll);
+      };
    }, []);
 
    useEffect(() => {
@@ -40,7 +46,9 @@ const Header = () => {
          <TopBar />
          <div
             ref={headerRef}
-            className="fixed z-50 top-[40px] left-0 w-full h-[68px] shadow-lg bg-white duration-100"
+            className={`fixed z-50 left-0 w-full h-[68px] shadow-lg bg-white duration-300 transition-all ${
+               isSticky ? "top-0" : "top-[40px]"
+            }`}
          >
             <div className="container mx-auto p-4 ">
                <div className="flex items-center justify-between max-md:hidden">

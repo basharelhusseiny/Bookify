@@ -3,10 +3,13 @@ import { Link } from "react-router";
 import { useModal } from "../../Context/ModalContext";
 import { useShoppingCart } from "../../Context/ShoppingCartContext";
 import BookRating from "../common/BookRating";
+import { useWishlist } from "../../Context/WishlistModalContext";
+import toast from "react-hot-toast";
 
 const BookCards = ({ book }) => {
    const { handleOpenModal } = useModal();
-   const { handleOpenShoppingCart, addToCart} = useShoppingCart();
+   const { handleOpenShoppingCart, addToCart } = useShoppingCart();
+   const { handleOpenWishlist, addToWishList, isInWishlist } = useWishlist();
    return (
       <>
          <div key={book.id} className="w-[200px] border-r border-gray-300 pr-5">
@@ -47,7 +50,16 @@ const BookCards = ({ book }) => {
                      onClick={() => handleOpenModal(book)}
                      className="bg-rose-100 text-rose-500 hover:bg-rose-500 hover:text-white cursor-pointer ml-1 w-[35px] h-[35px] rounded-full p-2  duration-200"
                   />
-                  <IoHeartOutline className="bg-rose-100 text-rose-500 hover:bg-rose-500 hover:text-white cursor-pointer ml-1 w-[35px] h-[35px] rounded-full p-2  duration-200" />
+                  <IoHeartOutline
+                     onClick={() => {
+                        isInWishlist(book)
+                           ? toast.error(
+                                `You already love ${book.title}! 📚`
+                             )
+                           : (addToWishList(book), handleOpenWishlist());
+                     }}
+                     className="bg-rose-100 text-rose-500 hover:bg-rose-500 hover:text-white cursor-pointer ml-1 w-[35px] h-[35px] rounded-full p-2  duration-200"
+                  />
                </div>
             </div>
          </div>

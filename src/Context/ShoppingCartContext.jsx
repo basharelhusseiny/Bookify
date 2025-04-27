@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const ShoppingCartContext = createContext();
 
@@ -14,11 +15,8 @@ const ShoppingCartProvider = ({ children }) => {
       setCartModalOpen(true);
    };
 
-   // const addToCart = (product) => {
-   //    setCartItems((prev) => [...prev, product]);
-   // };
    const addToCart = (product, quantity = 1) => {
-      const existingItem = cartItems.find((item) => item.id === product.id);
+      const existingItem = cartItems.some((item) => item.id === product.id);
 
       if (existingItem) {
          setCartItems((prev) =>
@@ -31,6 +29,7 @@ const ShoppingCartProvider = ({ children }) => {
                   : item
             )
          );
+         toast.success(`You've got more ${product.title} now! 📈`);
       } else {
          setCartItems((prev) => [
             ...prev,
@@ -39,12 +38,14 @@ const ShoppingCartProvider = ({ children }) => {
                quantity: quantity,
             },
          ]);
+         toast.success(`${product.title} is now in your cart! 🎉`);
       }
    };
 
    const removeItem = (id) => {
       const cart = cartItems.filter((item) => item.id !== id);
       setCartItems(cart);
+      toast.error(`Book removed from cart! ❌`);
    };
    useEffect(() => {
       localStorage.setItem("cartItem", JSON.stringify(cartItems));

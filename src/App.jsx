@@ -15,28 +15,38 @@ import ShoppingCartProvider from "./Context/ShoppingCartContext";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer/Footer";
+import WishlistModal from "./components/Wishlist/WishlistModal";
+import WishlistProvider from "./Context/WishlistModalContext";
+import { Toaster } from "react-hot-toast";
 
 function App() {
    return (
       <BrowserRouter>
          <ModalProvider>
             <ShoppingCartProvider>
-               <Header />
-               <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/shop" element={<Shop />} />
-                  <Route path="/authors" element={<Authors />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/bookpage/:id" element={<BookPage />} />
-                  <Route path="/shop/bookpage/:id" element={<BookPage />} />
-                  <Route path="/shoppingcart" element={<ShoppingCartPage />} />
-                  <Route path="/checkout" element={<Checkout />} />
-               </Routes>
-               <ViewModal />
-               <ShoppingCartModal />
-               {/* <Footer /> */}
-               {/* <BottomNav /> */}
+               <WishlistProvider>
+                  <Header />
+                  <Toaster position="top-center" reverseOrder={false} />
+                  <Routes>
+                     <Route path="/" element={<Home />} />
+                     <Route path="/shop" element={<Shop />} />
+                     <Route path="/authors" element={<Authors />} />
+                     <Route path="/blog" element={<Blog />} />
+                     <Route path="/contact" element={<Contact />} />
+                     <Route path="/bookpage/:id" element={<BookPage />} />
+                     <Route path="/shop/bookpage/:id" element={<BookPage />} />
+                     <Route
+                        path="/shoppingcart"
+                        element={<ShoppingCartPage />}
+                     />
+                     <Route path="/checkout" element={<Checkout />} />
+                  </Routes>
+                  <ViewModal />
+                  <ShoppingCartModal />
+                  <WishlistModal />
+                  {/* <Footer /> */}
+                  {/* <BottomNav /> */}
+               </WishlistProvider>
             </ShoppingCartProvider>
          </ModalProvider>
       </BrowserRouter>

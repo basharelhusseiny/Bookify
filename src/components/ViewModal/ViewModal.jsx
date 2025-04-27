@@ -5,10 +5,12 @@ import BookRating from "../common/BookRating";
 import ViewCartBtn from "./ViewCartBtn";
 import QuantitySelector from "../common/QuantitySelector";
 import { FaHeart } from "react-icons/fa";
-import { useShoppingCart } from "../../Context/ShoppingCartContext";
+import { useWishlist } from "../../Context/WishlistModalContext";
+import toast from "react-hot-toast";
 
 const ViewModal = () => {
    const { isModalOpen, selectedBook, setIsModalOpen } = useModal();
+   const { isInWishlist, addToWishList, handleOpenWishlist } = useWishlist();
    const [localQty, setLocalQty] = useState(1);
 
    // Prevent scrolling when opening the Modal
@@ -26,7 +28,7 @@ const ViewModal = () => {
          onClick={() => setIsModalOpen(false)}
          className={`${
             isModalOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-         } fixed top-0 left-0 w-full h-screen bg-gray-800/50 z-50 duration-500 `}
+         } fixed top-0 left-0 w-full h-screen bg-gray-800/60 z-50 duration-500 `}
       >
          <div
             onClick={(e) => e.stopPropagation()}
@@ -80,7 +82,18 @@ const ViewModal = () => {
                            selectedBook={selectedBook}
                            localQty={localQty}
                         />
-                        <button className="cursor-pointer h-[40px] max-md:px-3 bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-300">
+                        <button
+                           onClick={() => {
+                              isInWishlist(selectedBook)
+                                 ? toast.error(
+                                      `You already love ${selectedBook.title}! 📚`
+                                   )
+                                 : (setIsModalOpen(false),
+                                   addToWishList(selectedBook),
+                                   handleOpenWishlist());
+                           }}
+                           className="cursor-pointer h-[40px] max-md:px-3 bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-300"
+                        >
                            <FaHeart className="text-xl animate-pulse" />
                         </button>
                      </div>

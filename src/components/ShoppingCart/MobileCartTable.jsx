@@ -1,4 +1,5 @@
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router";
 
 const MobileCartTable = ({ cartItems, removeItem }) => {
    return (
@@ -13,17 +14,23 @@ const MobileCartTable = ({ cartItems, removeItem }) => {
                      onClick={() => removeItem(product.id)}
                      className="absolute text-lg right-0 top-6 text-gray-500 cursor-pointer hover:text-rose-500 duration-500"
                   />
-                  <div className="w-[90px] h-[130px]">
+                  <Link
+                     to={`/bookpage/${product.id}`}
+                     className="block w-[90px] h-[130px]"
+                  >
                      <img
                         src={`/images/books/${product.image}`}
                         alt={product.title}
                         className="w-full h-full"
                      />
-                  </div>
+                  </Link>
                   <div className="w-full">
-                     <p className="font-semibold text-lg mr-5">
+                     <Link
+                        to={`/bookpage/${product.id}`}
+                        className="block font-semibold text-lg mr-5 hover:text-rose-500 duration-200"
+                     >
                         {product.title}
-                     </p>
+                     </Link>
                      <p className="text-lg">
                         <span className="capitalize font-medium">Author: </span>
                         <span className="text-gray-500 text-[15px]">

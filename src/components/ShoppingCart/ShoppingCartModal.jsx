@@ -27,7 +27,7 @@ const ShoppingCartModal = () => {
          onClick={() => setCartModalOpen(false)}
          className={`${
             cartModalOpen ? "translate-x-0" : "translate-x-full"
-         } fixed w-full h-screen top-0 left-0 z-50 bg-gray-800/50 ease-in-out duration-800`}
+         } fixed w-full h-screen top-0 left-0 z-50 bg-gray-800/60 ease-in-out duration-800`}
       >
          <div
             onClick={(e) => e.stopPropagation()}

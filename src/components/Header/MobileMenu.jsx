@@ -5,9 +5,12 @@ import { useShoppingCart } from "../../Context/ShoppingCartContext";
 import CloseButton from "../common/CloseButton";
 import Logo from "./Logo";
 import { IoHeartOutline } from "react-icons/io5";
+import { useWishlist } from "../../Context/WishlistModalContext";
 
 const MobileMenu = ({ isMobMenuOpen, setIsMobMenuOpen, navLinks }) => {
    const { handleOpenShoppingCart, cartItems } = useShoppingCart();
+   const { handleOpenWishlist, wishlistBooks } = useWishlist();
+
    return (
       <div>
          {/* Header from Mobile */}
@@ -20,7 +23,19 @@ const MobileMenu = ({ isMobMenuOpen, setIsMobMenuOpen, navLinks }) => {
             </div>
             <Logo />
             <div className="flex items-center gap-1">
-               <IoHeartOutline className="text-[28px]" />
+               <div className="relative cursor-pointer">
+                  <IoHeartOutline
+                     onClick={() => handleOpenWishlist()}
+                     className="text-[28px]"
+                  />
+                  <span
+                     className={`${
+                        wishlistBooks.length === 0 ? "hidden" : "flex"
+                     } absolute items-center justify-center w-[14px] h-[14px] bg-rose-500 rounded-full -top-[6px] -right-[5px] text-[10px] font-semibold text-white`}
+                  >
+                     {wishlistBooks.length}
+                  </span>
+               </div>
                <div className="relative cursor-pointer">
                   <CiShoppingBasket
                      onClick={() => handleOpenShoppingCart()}

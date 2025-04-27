@@ -10,7 +10,6 @@ export const books = [
       printLength: 320,
       language: "English",
       PublicationDate: "16 April 2018",
-      inStock: true,
    },
    {
       id: 2,
@@ -23,7 +22,6 @@ export const books = [
       printLength: 410,
       language: "English",
       PublicationDate: "1 March 2015",
-      inStock: true,
    },
    {
       id: 3,
@@ -36,7 +34,6 @@ export const books = [
       printLength: 352,
       language: "English",
       PublicationDate: "1 June 2019",
-      inStock: true,
    },
    {
       id: 4,
@@ -49,7 +46,6 @@ export const books = [
       printLength: 416,
       language: "English",
       PublicationDate: "8 October 2012",
-      inStock: true,
    },
    {
       id: 5,
@@ -62,7 +58,6 @@ export const books = [
       printLength: 336,
       language: "English",
       PublicationDate: "27 April 2017",
-      inStock: true,
    },
    {
       id: 6,
@@ -75,7 +70,6 @@ export const books = [
       printLength: 342,
       language: "English",
       PublicationDate: "17 July 2016",
-      inStock: true,
    },
    {
       id: 7,
@@ -88,7 +82,6 @@ export const books = [
       printLength: 320,
       language: "English",
       PublicationDate: "1 September 2005",
-      inStock: true,
    },
    {
       id: 8,
@@ -101,7 +94,6 @@ export const books = [
       printLength: 288,
       language: "English",
       PublicationDate: "23 March 2017",
-      inStock: true,
    },
    {
       id: 9,
@@ -114,7 +106,6 @@ export const books = [
       printLength: 325,
       language: "English",
       PublicationDate: "4 December 2018",
-      inStock: true,
    },
    {
       id: 10,
@@ -127,6 +118,5 @@ export const books = [
       printLength: 128,
       language: "English",
       PublicationDate: "16 April 2018",
-      inStock: false,
    },
 ];

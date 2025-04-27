@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import CloseButton from "../common/CloseButton";
 
 const CartTable = ({ cartItems, removeItem }) => {
@@ -21,14 +22,21 @@ const CartTable = ({ cartItems, removeItem }) => {
                         <CloseButton onClick={() => removeItem(product.id)} />
                      </td>
                      <td className="py-3 pr-3 w-[180px]">
-                        <img
-                           src={`/images/books/${product.image}`}
-                           className="w-[130px] h-[130px] object-contain"
-                           alt="photo"
-                        />
+                        <Link to={`/bookpage/${product.id}`}>
+                           <img
+                              src={`/images/books/${product.image}`}
+                              className="w-[130px] h-[130px] object-contain"
+                              alt="photo"
+                           />
+                        </Link>
                      </td>
                      <td className="py-3 pr-7 w-[220px]">
-                        <p className="font-bold pb-2">{product.title}</p>
+                        <Link
+                           to={`/bookpage/${product.id}`}
+                           className="font-bold pb-2 hover:text-rose-500 duration-200"
+                        >
+                           {product.title}
+                        </Link>
                         <p>
                            <span className="text-sm font-medium">Author: </span>
                            <span className="text-sm text-gray-500">

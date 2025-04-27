@@ -5,6 +5,8 @@ import { FaHeart } from "react-icons/fa";
 import BookRating from "../components/common/BookRating";
 import ViewCartBtn from "../components/ViewModal/ViewCartBtn";
 import QuantitySelector from "../components/common/QuantitySelector";
+import { useWishlist } from "../Context/WishlistModalContext";
+import toast from "react-hot-toast";
 
 const SingleBookPage = () => {
    const { id } = useParams();
@@ -12,8 +14,10 @@ const SingleBookPage = () => {
    const [animate, setAnimate] = useState(false);
    const [activeImg, setActiveImg] = useState(false);
    const [localQty, setLocalQty] = useState(1);
+   const { handleOpenWishlist, addToWishList, isInWishlist } = useWishlist();
 
    const bookData = books.find((book) => book.id === +id);
+
    const changeImg = (imgSrc) => {
       setAnimate(true);
       mainImg.current.src = imgSrc;
@@ -94,7 +98,17 @@ const SingleBookPage = () => {
                      />
                      <div className="flex max-sm:mt-3">
                         <ViewCartBtn bookData={bookData} localQty={localQty} />
-                        <button className="flex items-center justify-center cursor-pointer h-[40px] max-md:px-3  bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-200">
+                        <button
+                           onClick={() => {
+                              isInWishlist(bookData)
+                                 ? toast.error(
+                                      "The book is already in your wishlist!"
+                                   )
+                                 : (addToWishList(bookData),
+                                   handleOpenWishlist());
+                           }}
+                           className="flex items-center justify-center cursor-pointer h-[40px] max-xl:px-3  bg-white border-2 border-gray-300 hover:bg-rose-500 rounded-xl text-gray-800 hover:text-white px-5 duration-200"
+                        >
                            <FaHeart className="text-xl mr-[6px] max-md:mr-[3px] animate-pulse" />
                            <span className="text-[15px] max-md:text-[11px] font-semibold">
                               Add to Wishlist
