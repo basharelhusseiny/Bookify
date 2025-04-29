@@ -50,13 +50,7 @@ const BookSlider = () => {
                transition={{ type: "spring", stiffness: 200, damping: 20 }}
                className="book-slider-wrapper relative my-13"
             >
-               <div className="flex gap-5">
-                  {books.map((book) => (
-                     <div key={book.id}>
-                        <BookCards book={book} />
-                     </div>
-                  ))}
-               </div>
+               <BookCards books={books} />
             </motion.div>
          </div>
       </section>

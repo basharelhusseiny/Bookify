@@ -1,5 +1,4 @@
 @import "tailwindcss";
-/* @plugin "daisyui"; */
 
 html {
    scroll-behavior: smooth;
@@ -44,6 +43,11 @@ body {
 }
 .custom-scrollbar::-webkit-scrollbar-track {
    background: #ddd;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+   display: none;
 }
 
 /* Arrow from input Number */

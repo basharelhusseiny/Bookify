@@ -4,16 +4,13 @@ import CartTable from "../components/ShoppingCart/CartTable";
 import MobileCartTable from "../components/ShoppingCart/MobileCartTable";
 import OrderSummary from "../components/ShoppingCart/CartSummary";
 import EmptyCart from "../components/ShoppingCart/EmptyCart";
+import PageHeader from "../components/common/PageHeader";
 
 const ShoppingCartPage = () => {
    const { cartItems, removeItem, totalPrice } = useShoppingCart();
    return (
       <div className="mt-[68px]">
-         <div className="bg-rose-100 py-16">
-            <h1 className="text-center text-5xl max-sm:text-3xl uppercase font-extralight">
-               Shopping cart
-            </h1>
-         </div>
+         <PageHeader title={"Shopping cart"}/>
          <div className="container mx-auto px-5">
             {cartItems.length === 0 ? (
                <EmptyCart

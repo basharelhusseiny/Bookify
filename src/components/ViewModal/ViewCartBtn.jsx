@@ -1,11 +1,15 @@
 import { FaShoppingBasket } from "react-icons/fa";
 import { useShoppingCart } from "../../Context/ShoppingCartContext";
+import { useModal } from "../../Context/ModalContext";
 
 const ViewCartBtn = ({ selectedBook, bookData, localQty }) => {
    const { handleOpenShoppingCart, addToCart } = useShoppingCart();
+   const { setIsModalOpen } = useModal();
+
    return (
       <button
          onClick={() => {
+            setIsModalOpen(false);
             handleOpenShoppingCart();
             addToCart(selectedBook || bookData, localQty);
          }}

@@ -1,3 +1,4 @@
+import PageHeader from "../components/common/PageHeader";
 import BooksSide from "../components/ShopPageSections/BooksSide";
 import FilterBar from "../components/ShopPageSections/FilterBar";
 import RecommendedBook from "../components/ShopPageSections/RecommendedBook";
@@ -19,12 +20,8 @@ const Shop = () => {
       { id: 13, name: "Historical" },
    ];
    return (
-      <div className="mt-[68px]">
-         <div className="bg-rose-100 py-17">
-            <h1 className="text-center text-5xl max-sm:text-4xl uppercase font-extralight">
-               shop
-            </h1>
-         </div>
+      <div className="mt-[68px] mb-20">
+         <PageHeader title={"Shop"} />
          <div className="container mx-auto px-5">
             <RecommendedBook />
             <div className="flex lg:gap-10 mt-20">

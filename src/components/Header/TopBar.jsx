@@ -21,7 +21,7 @@ const TopBar = () => {
                </div>
                <div className="social flex items-center gap-5">
                   <FaFacebookF className="hover:text-blue-500 duration-200 cursor-pointer" />
-                  <FaXTwitter className="hover:text-gray-400 duration cursor-pointer" />
+                  <FaXTwitter className="hover:text-gray-400 duration-200 cursor-pointer" />
                   <FaInstagram className="hover:text-fuchsia-500 duration-200 cursor-pointer" />
                </div>
             </div>

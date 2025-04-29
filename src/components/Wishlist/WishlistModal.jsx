@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { IoClose } from "react-icons/io5";
 import { FaShoppingBasket } from "react-icons/fa";
 import { useShoppingCart } from "../../Context/ShoppingCartContext";
+import EmptyWishlist from "./EmptyWishlist";
 
 const WishlistModal = () => {
    const {
@@ -51,66 +52,78 @@ const WishlistModal = () => {
                   </div>
                </div>
                {/* Body */}
-               <div className="overflow-y-auto h-[calc(85dvh-101px)]">
-                  {wishlistBooks.map((product) => {
-                     return (
-                        <div
-                           key={product.id}
-                           className="flex items-center px-5 py-3 border-b-2 border-gray-200 last:border-b-0"
-                        >
-                           <IoClose
-                              onClick={() => removeBook(product.id)}
-                              className="text-lg mr-3 hover:text-rose-500 cursor-pointer duration-200"
-                           />
-                           <Link
-                              to={`/bookpage/${product.id}`}
-                              onClick={() => setWishlistModalOpen(false)}
-                              className="flex w-[85px] h-[130px] overflow-hidden  bg-gray-100"
+               {wishlistBooks.length === 0 ? (
+                  <EmptyWishlist />
+               ) : (
+                  <div className="custom-scrollbar overflow-y-auto h-[calc(85dvh-101px)]">
+                     {wishlistBooks.map((product) => {
+                        return (
+                           <div
+                              key={product.id}
+                              className="flex items-center px-5 py-3 border-b-2 border-gray-200 last:border-b-0"
                            >
-                              <img
-                                 src={`/images/books/${product.image}`}
-                                 alt={product.title}
-                                 className="w-full h-full object-cover object-center"
+                              <IoClose
+                                 onClick={() => removeBook(product.id)}
+                                 className="text-lg mr-3 hover:text-rose-500 cursor-pointer duration-200"
                               />
-                           </Link>
-                           <div className="mx-3">
                               <Link
                                  to={`/bookpage/${product.id}`}
                                  onClick={() => setWishlistModalOpen(false)}
-                                 className="font-semibold hover:text-rose-500 duration-200"
+                                 className="flex min-w-[85px] h-[130px] overflow-hidden  bg-gray-100"
                               >
-                                 {product.title}
+                                 <img
+                                    src={`/images/books/${product.image}`}
+                                    alt={product.title}
+                                    className="w-full h-full object-cover object-center"
+                                 />
                               </Link>
-                              <p className="font-semibold text-rose-500 py-1">
-                                 ${product.price}
-                              </p>
-                              <p className="text-gray-500 text-[15px]">
-                                 {product.clickedProduct}
-                              </p>
-                              <button
-                                 onClick={() => {
-                                    handleOpenShoppingCart();
-                                    setWishlistModalOpen(false);
-                                    addToCart(product);
-                                 }}
-                                 className="flex items-center justify-center mt-2 font-medium bg-rose-500 text-white px-4 py-[5px] max-sm:px-2 max-sm:py-1 rounded-full cursor-pointer hover:bg-rose-700 duration-300"
-                              >
-                                 <FaShoppingBasket className="" />
-                                 <span className="block pl-2 text-[15px]">
-                                    Add to cart
-                                 </span>
-                              </button>
+                              <div className="mx-3">
+                                 <Link
+                                    to={`/bookpage/${product.id}`}
+                                    onClick={() => setWishlistModalOpen(false)}
+                                    className="font-semibold hover:text-rose-500 duration-200"
+                                 >
+                                    {product.title}
+                                 </Link>
+                                 <p className="font-semibold text-rose-500 py-1">
+                                    ${product.price}
+                                 </p>
+                                 <p className="pb-1">
+                                    <span className="font-medium text-[15px]">
+                                       Author:{" "}
+                                    </span>
+                                    <span className="text-sm text-gray-600 ">
+                                       {product.author}
+                                    </span>
+                                 </p>
+                                 <p className="text-gray-500 text-[14px]">
+                                    {product.clickedProduct}
+                                 </p>
+                                 <button
+                                    onClick={() => {
+                                       handleOpenShoppingCart();
+                                       setWishlistModalOpen(false);
+                                       addToCart(product);
+                                    }}
+                                    className="flex items-center justify-center mt-2 font-medium bg-rose-500 text-white px-4 py-[5px] max-sm:px-2 max-sm:py-1 rounded-full cursor-pointer hover:bg-rose-700 duration-300"
+                                 >
+                                    <FaShoppingBasket className="" />
+                                    <span className="block pl-2 text-[15px]">
+                                       Add to cart
+                                    </span>
+                                 </button>
+                              </div>
                            </div>
-                        </div>
-                     );
-                  })}
-               </div>
+                        );
+                     })}
+                  </div>
+               )}
                {/* Footer */}
-               <div className="flex items-center justify-between fixed bottom-0 w-full bg-rose-300 px-5 py-3 ">
-                  <Link className="block uppercase max-md:text-[11px] text-[15px] underline hover:text-rose-600 dura">
-                     open wishlist page
-                  </Link>
-                  <Link className="block uppercase max-md:text-[11px] text-[15px] underline hover:text-rose-600 dura">
+               <div className="flex items-center justify-center fixed bottom-0 w-full bg-rose-300 px-5 py-3 ">
+                  <Link
+                     onClick={() => setWishlistModalOpen(false)}
+                     className="block uppercase max-md:text-[11px] text-[15px] underline hover:text-rose-600 dura"
+                  >
                      continue shopping
                   </Link>
                </div>

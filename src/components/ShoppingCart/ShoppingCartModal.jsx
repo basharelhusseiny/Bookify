@@ -51,12 +51,12 @@ const ShoppingCartModal = () => {
                   />
                ) : (
                   <>
-                     <div className="overflow-y-auto h-[calc(100dvh-240px)]">
+                     <div className="custom-scrollbar overflow-y-auto h-[calc(100dvh-240px)]">
                         {cartItems.map((product) => {
                            return (
                               <div
                                  key={product.id}
-                                 className="flex relative items-center p-3 border-b-1 border-gray-300 hover:bg-gray-100 duration-300"
+                                 className="flex relative items-center p-3 border-b-1 border-gray-300 hover:bg-gray-100 last:border-0 duration-300"
                               >
                                  <IoClose
                                     onClick={() => removeItem(product.id)}

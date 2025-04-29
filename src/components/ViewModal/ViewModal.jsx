@@ -67,10 +67,7 @@ const ViewModal = () => {
                      ${selectedBook?.price}
                   </p>
                   <p className="text-sm tracking-wide text-gray-600 leading-[22px]">
-                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                     Facere maiores nihil mollitia a libero consectetur quia,
-                     aspernatur necessitatibus assumenda. Fugiat culpa aliquam
-                     labore libero hic nihil minima aut saepe natus.
+                     {selectedBook?.summary}
                   </p>
                   <div className="flex max-sm:flex-col max-sm:items-start items-center my-5">
                      <QuantitySelector

@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router";
+import { Toaster } from "react-hot-toast";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Authors from "./pages/Authors";
+import AuthorDetails from "./pages/AuthorDetails";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
-import BottomNav from "./components/BottomNav";
 import ModalProvider from "./Context/ModalContext";
 import BookPage from "./pages/SingleBookPage";
 import ViewModal from "./components/ViewModal/ViewModal";
@@ -17,7 +18,8 @@ import Checkout from "./pages/Checkout";
 import Footer from "./components/Footer/Footer";
 import WishlistModal from "./components/Wishlist/WishlistModal";
 import WishlistProvider from "./Context/WishlistModalContext";
-import { Toaster } from "react-hot-toast";
+import ScrollToTop from "./components/common/ScrollToTop";
+import SingleBlogPage from "./pages/SingleBlogPage";
 
 function App() {
    return (
@@ -27,14 +29,24 @@ function App() {
                <WishlistProvider>
                   <Header />
                   <Toaster position="top-center" reverseOrder={false} />
+                  <ScrollToTop />
                   <Routes>
                      <Route path="/" element={<Home />} />
                      <Route path="/shop" element={<Shop />} />
                      <Route path="/authors" element={<Authors />} />
+                     <Route
+                        path="/authordetails/:name"
+                        element={<AuthorDetails />}
+                     />
                      <Route path="/blog" element={<Blog />} />
+                     <Route path="/singleblogpage/:id" element={<SingleBlogPage />} />
                      <Route path="/contact" element={<Contact />} />
                      <Route path="/bookpage/:id" element={<BookPage />} />
                      <Route path="/shop/bookpage/:id" element={<BookPage />} />
+                     <Route
+                        path="/authordetails/:name/bookpage/:id"
+                        element={<BookPage />}
+                     />
                      <Route
                         path="/shoppingcart"
                         element={<ShoppingCartPage />}
@@ -44,8 +56,7 @@ function App() {
                   <ViewModal />
                   <ShoppingCartModal />
                   <WishlistModal />
-                  {/* <Footer /> */}
-                  {/* <BottomNav /> */}
+                  <Footer />
                </WishlistProvider>
             </ShoppingCartProvider>
          </ModalProvider>

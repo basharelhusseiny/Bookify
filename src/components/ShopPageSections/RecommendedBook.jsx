@@ -14,15 +14,16 @@ const RecomendedBook = () => {
                      className="w-[150px] h-[200px] rounded-xl mr-5"
                      alt={product.title}
                   />
-                  <div className="flex flex-col justify-between ">
+                  <div className="flex flex-col justify-between">
                      <div>
-                        <h4 className="text-[17px] font-semibold mb-2">
+                        <h4
+                           className="text-[17px] font-semibold mb-2 mt-1 text-ellipsis line-clamp-1"
+                           title={product.title}
+                        >
                            {product.title}
                         </h4>
-                        <p className="text-[13px] text-gray-600">
-                           Lorem ipsum dolor sit amet consectetur, adipisicing
-                           elit. Dolorum, quo sit nostrum laboriosam
-                           consequuntur minima suscipit libero cupiditate.
+                        <p className="text-[13px] text-gray-600 text-ellipsis line-clamp-5">
+                           {product.summary}
                         </p>
                      </div>
                      <Link

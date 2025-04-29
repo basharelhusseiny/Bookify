@@ -24,6 +24,13 @@ const SingleBookPage = () => {
       setTimeout(() => setAnimate(false), 300);
    };
 
+   if (!bookData) {
+      return (
+         <div className="m-[150px] text-4xl max-sm:text-xl font-light uppercase text-center text-red-500">
+            Book not found
+         </div>
+      );
+   }
    return (
       <div className="my-[110px]">
          <div className="container mx-auto px-5">
@@ -86,10 +93,7 @@ const SingleBookPage = () => {
                      ${bookData?.price}
                   </p>
                   <p className="text-sm tracking-wide text-gray-600 leading-[22px]">
-                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                     Facere maiores nihil mollitia a libero consectetur quia,
-                     aspernatur necessitatibus assumenda. Fugiat culpa aliquam
-                     labore libero hic nihil minima aut saepe natus.
+                     {bookData?.summary}
                   </p>
                   <div className="flex max-sm:flex-col max-sm:items-start items-center my-5">
                      <QuantitySelector
