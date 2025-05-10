@@ -13,6 +13,7 @@ const RecomendedBook = () => {
                      src={`/images/books/${product.image}`}
                      className="w-[150px] h-[200px] rounded-xl mr-5"
                      alt={product.title}
+                     loading="lazy"
                   />
                   <div className="flex flex-col justify-between">
                      <div>

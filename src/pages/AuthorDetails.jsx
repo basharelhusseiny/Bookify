@@ -32,6 +32,7 @@ const AuthorDetails = () => {
                      src={`/images/${authorData.image}`}
                      alt={authorData.name}
                      className="w-[300px] h-[300px] max-md:mx-auto object-cover rounded-2xl"
+                     loading="lazy"
                   />
                   <div className="">
                      <h3 className="text-3xl font-semibold mt-2 mb-5">

@@ -21,6 +21,7 @@ const Authors = () => {
                               src={`/images/${author.image}`}
                               alt={author.name}
                               className="w-[100px] h-[100px] mx-auto rounded-2xl object-cover mb-5"
+                              loading="lazy"
                            />
                         </Link>
                         <Link

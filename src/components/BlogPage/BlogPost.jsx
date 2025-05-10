@@ -11,6 +11,7 @@ const BlogPost = ({ posts }) => {
                      src={`/images/blogposts/${post.image}`}
                      alt={post.title}
                      className="w-full rounded-2xl"
+                     loading="lazy"
                   />
                   <div className="flex flex-col justify-between h-[130px]">
                      <div>

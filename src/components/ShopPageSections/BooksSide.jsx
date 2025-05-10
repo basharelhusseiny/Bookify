@@ -50,6 +50,7 @@ const BooksSide = () => {
                            src={`/images/books/${product.image}`}
                            alt={product.title}
                            className="w-full h-full"
+                           loading="lazy"
                         />
                         <div className="absolute flex flex-col p-2 justify-end items-end z-10 w-full h-full bg-black/20 translate-x-full group-hover:translate-x-0 bottom-0 right-0 over duration-700">
                            <IoHeartOutline

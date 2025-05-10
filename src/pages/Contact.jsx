@@ -54,6 +54,7 @@ const Contact = () => {
                               <img
                                  src={`/images/${place.img}`}
                                  alt={place.place}
+                                 loading="lazy"
                               />
                            </div>
                            <div className="[&>p]:text-gray-500 [&>p]:text-[15px] [&>p]:mb-1 mb-5 px-1">
