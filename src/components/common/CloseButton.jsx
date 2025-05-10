@@ -1,3 +1,5 @@
+import React from "react";
+
 const CloseButton = ({ onClick, backgroundColor }) => {
    return (
       <button
@@ -11,4 +13,4 @@ const CloseButton = ({ onClick, backgroundColor }) => {
    );
 };
 
-export default CloseButton;
+export default React.memo(CloseButton);

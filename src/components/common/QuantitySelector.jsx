@@ -1,3 +1,5 @@
+import React from "react";
+
 const QuantitySelector = ({ quantity, setQuantity }) => {
    return (
       <div className="flex border-2 border-gray-300 w-fit rounded-full overflow-hidden">
@@ -27,4 +29,4 @@ const QuantitySelector = ({ quantity, setQuantity }) => {
    );
 };
 
-export default QuantitySelector;
+export default React.memo(QuantitySelector);

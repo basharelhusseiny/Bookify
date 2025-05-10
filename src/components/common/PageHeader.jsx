@@ -1,8 +1,9 @@
+import React from "react";
 import { Link } from "react-router";
 
 const PageHeader = ({ title }) => {
    return (
-      <div className="bg-rose-100 py-16">
+      <div className="bg-rose-100 py-16 max-sm:py-12">
          <h1 className="text-center text-5xl max-sm:text-4xl uppercase font-extralight">
             {title}
          </h1>
@@ -44,4 +45,4 @@ const PageHeader = ({ title }) => {
    );
 };
 
-export default PageHeader;
+export default React.memo(PageHeader);

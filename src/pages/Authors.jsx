@@ -7,7 +7,7 @@ const Authors = () => {
    return (
       <div className="mt-[68px] mb-20">
          <PageHeader title={"Authors"} />
-         <div className="container mx-auto px-5 mt-14">
+         <div className="container mx-auto px-5 mt-14 max-sm:mt-12">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
                {authors.map((author) => {
                   const authorBooks = books.filter(

@@ -1,66 +1,59 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import { Toaster } from "react-hot-toast";
+import { lazy, Suspense } from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
+import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home";
-import Shop from "./pages/Shop";
-import Authors from "./pages/Authors";
-import AuthorDetails from "./pages/AuthorDetails";
-import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
 import ModalProvider from "./Context/ModalContext";
-import BookPage from "./pages/SingleBookPage";
-import ViewModal from "./components/ViewModal/ViewModal";
-import ShoppingCartModal from "./components/ShoppingCart/ShoppingCartModal";
 import ShoppingCartProvider from "./Context/ShoppingCartContext";
-import ShoppingCartPage from "./pages/ShoppingCartPage";
-import Checkout from "./pages/Checkout";
-import Footer from "./components/Footer/Footer";
-import WishlistModal from "./components/Wishlist/WishlistModal";
 import WishlistProvider from "./Context/WishlistModalContext";
-import ScrollToTop from "./components/common/ScrollToTop";
-import SingleBlogPage from "./pages/SingleBlogPage";
+import MainLoader from "./components/common/MainLoader";
+
+const Shop = lazy(() => import("./pages/Shop"));
+const Authors = lazy(() => import("./pages/Authors"));
+const AuthorDetails = lazy(() => import("./pages/AuthorDetails"));
+const Blog = lazy(() => import("./pages/Blog"));
+const SingleBlogPage = lazy(() => import("./pages/SingleBlogPage"));
+const Contact = lazy(() => import("./pages/Contact"));
+const BookPage = lazy(() => import("./pages/SingleBookPage"));
+const ShoppingCartPage = lazy(() => import("./pages/ShoppingCartPage"));
+const Checkout = lazy(() => import("./pages/Checkout"));
 
 function App() {
+   const router = createBrowserRouter([
+      {
+         path: "/",
+         element: <Layout />,
+         children: [
+            { path: "/", element: <Home /> },
+            { path: "/shop", element: <Shop /> },
+            { path: "/authors", element: <Authors /> },
+            { path: "/authordetails/:name", element: <AuthorDetails /> },
+            { path: "/blog", element: <Blog /> },
+            { path: "/singleblogpage/:id", element: <SingleBlogPage /> },
+            { path: "/contact", element: <Contact /> },
+            { path: "/bookpage/:id", element: <BookPage /> },
+            { path: "/shop/bookpage/:id", element: <BookPage /> },
+            {
+               path: "/authordetails/:name/bookpage/:id",
+               element: <BookPage />,
+            },
+            { path: "/shoppingcart", element: <ShoppingCartPage /> },
+            { path: "/checkout", element: <Checkout /> },
+         ],
+      },
+   ]);
    return (
-      <BrowserRouter>
-         <ModalProvider>
-            <ShoppingCartProvider>
-               <WishlistProvider>
-                  <Header />
-                  <Toaster position="top-center" reverseOrder={false} />
-                  <ScrollToTop />
-                  <Routes>
-                     <Route path="/" element={<Home />} />
-                     <Route path="/shop" element={<Shop />} />
-                     <Route path="/authors" element={<Authors />} />
-                     <Route
-                        path="/authordetails/:name"
-                        element={<AuthorDetails />}
-                     />
-                     <Route path="/blog" element={<Blog />} />
-                     <Route path="/singleblogpage/:id" element={<SingleBlogPage />} />
-                     <Route path="/contact" element={<Contact />} />
-                     <Route path="/bookpage/:id" element={<BookPage />} />
-                     <Route path="/shop/bookpage/:id" element={<BookPage />} />
-                     <Route
-                        path="/authordetails/:name/bookpage/:id"
-                        element={<BookPage />}
-                     />
-                     <Route
-                        path="/shoppingcart"
-                        element={<ShoppingCartPage />}
-                     />
-                     <Route path="/checkout" element={<Checkout />} />
-                  </Routes>
-                  <ViewModal />
-                  <ShoppingCartModal />
-                  <WishlistModal />
-                  <Footer />
-               </WishlistProvider>
-            </ShoppingCartProvider>
-         </ModalProvider>
-      </BrowserRouter>
+      <ModalProvider>
+         <ShoppingCartProvider>
+            <WishlistProvider>
+               <Suspense fallback={<MainLoader />}>
+                  <RouterProvider router={router} />
+               </Suspense>
+               <Toaster position="top-center" reverseOrder={false} />
+            </WishlistProvider>
+         </ShoppingCartProvider>
+      </ModalProvider>
    );
 }
 

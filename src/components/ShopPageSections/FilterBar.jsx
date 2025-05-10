@@ -1,3 +1,4 @@
+import React from "react";
 import { books } from "../../data/books";
 
 const FilterBar = ({ categories }) => {
@@ -67,4 +68,4 @@ const FilterBar = ({ categories }) => {
    );
 };
 
-export default FilterBar;
+export default React.memo(FilterBar);
