@@ -30,7 +30,7 @@
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/yourusername/bookify.git
+git clone https://github.com/basharelhusseiny/bookify.git
 cd bookify
 npm install
 npm run dev
